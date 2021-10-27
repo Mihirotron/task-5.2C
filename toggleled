@@ -1,0 +1,52 @@
+from gpiozero import LED
+from tkinter import *
+
+
+green = LED(11)
+red = LED(12)
+blue = LED(13)
+
+
+green.off()
+red.off()
+blue.off()
+
+
+
+def Green():
+    green.on()
+    red.off()
+    blue.off()
+    print("Turn on green LED")
+    
+def Red():
+    green.off()
+    red.on()
+    blue.off()
+    print("Turn on red LED")
+
+def Blue():
+    green.off()
+    red.off()
+    blue.on()
+    print("Turn on blue LED")
+    
+def Off():
+    gui.destroy()
+    print("Shutdown!")
+    
+gui = Tk()
+gui.title("LEDs")
+
+G = Radiobutton(gui, text = "Turn Green",value = 0, command = Green, bg = "red", height = 2, width = 12)
+R = Radiobutton(gui, text = "Turn Red",value = 1, command = Red, bg = "red", height = 2, width = 12)
+B = Radiobutton(gui, text = "Turn Blue",value = 2, command = Blue, bg = "red", height = 2, width = 12)
+O = Button(gui, text = "Turn Off",border = 5, command = Off, bg = "gray", height = 2, width = 12)
+
+G.grid(row=0,column=1)
+R.grid(row=1,column=1)
+B.grid(row=2,column=1)
+O.grid(row=3,column=1)
+
+
+gui.mainloop()
